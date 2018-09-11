@@ -4,7 +4,7 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 2
+Release  : 3
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : MIT
 Requires: recommonmark-bin
 Requires: recommonmark-python3
+Requires: recommonmark-license
 Requires: recommonmark-python
 Requires: Sphinx
 Requires: commonmark
@@ -34,9 +35,18 @@ This allows you to write CommonMark inside of Docutils & Sphinx projects.
 %package bin
 Summary: bin components for the recommonmark package.
 Group: Binaries
+Requires: recommonmark-license
 
 %description bin
 bin components for the recommonmark package.
+
+
+%package license
+Summary: license components for the recommonmark package.
+Group: Default
+
+%description license
+license components for the recommonmark package.
 
 
 %package python
@@ -65,11 +75,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536662462
+export SOURCE_DATE_EPOCH=1536663234
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/recommonmark
+cp license.md %{buildroot}/usr/share/doc/recommonmark/license.md
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -86,6 +98,10 @@ echo ----[ mark ]----
 /usr/bin/cm2pseudoxml
 /usr/bin/cm2xetex
 /usr/bin/cm2xml
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/recommonmark/license.md
 
 %files python
 %defattr(-,root,root,-)
