@@ -4,7 +4,7 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 5
+Release  : 6
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
@@ -74,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541276761
+export SOURCE_DATE_EPOCH=1541278032
 python3 setup.py build
 
 %install
