@@ -4,16 +4,16 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 3
+Release  : 4
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
-Requires: recommonmark-bin
-Requires: recommonmark-python3
-Requires: recommonmark-license
-Requires: recommonmark-python
+Requires: recommonmark-bin = %{version}-%{release}
+Requires: recommonmark-license = %{version}-%{release}
+Requires: recommonmark-python = %{version}-%{release}
+Requires: recommonmark-python3 = %{version}-%{release}
 Requires: Sphinx
 Requires: commonmark
 Requires: docutils
@@ -35,7 +35,7 @@ This allows you to write CommonMark inside of Docutils & Sphinx projects.
 %package bin
 Summary: bin components for the recommonmark package.
 Group: Binaries
-Requires: recommonmark-license
+Requires: recommonmark-license = %{version}-%{release}
 
 %description bin
 bin components for the recommonmark package.
@@ -52,7 +52,7 @@ license components for the recommonmark package.
 %package python
 Summary: python components for the recommonmark package.
 Group: Default
-Requires: recommonmark-python3
+Requires: recommonmark-python3 = %{version}-%{release}
 
 %description python
 python components for the recommonmark package.
@@ -75,14 +75,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536663234
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1541276657
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/recommonmark
-cp license.md %{buildroot}/usr/share/doc/recommonmark/license.md
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/recommonmark
+cp license.md %{buildroot}/usr/share/package-licenses/recommonmark/license.md
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -100,8 +100,8 @@ echo ----[ mark ]----
 /usr/bin/cm2xml
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/recommonmark/license.md
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/recommonmark/license.md
 
 %files python
 %defattr(-,root,root,-)
