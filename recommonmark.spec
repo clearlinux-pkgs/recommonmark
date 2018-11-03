@@ -4,7 +4,7 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 4
+Release  : 5
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
@@ -14,7 +14,6 @@ Requires: recommonmark-bin = %{version}-%{release}
 Requires: recommonmark-license = %{version}-%{release}
 Requires: recommonmark-python = %{version}-%{release}
 Requires: recommonmark-python3 = %{version}-%{release}
-Requires: Sphinx
 Requires: commonmark
 Requires: docutils
 BuildRequires : Sphinx
@@ -75,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541276657
+export SOURCE_DATE_EPOCH=1541276761
 python3 setup.py build
 
 %install
