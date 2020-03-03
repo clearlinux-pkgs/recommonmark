@@ -4,7 +4,7 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 12
+Release  : 13
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
@@ -68,19 +68,28 @@ python3 components for the recommonmark package.
 
 %prep
 %setup -q -n recommonmark-33b5c2a4ec50d18d3f659aa119d3bd11452327da
+cd %{_builddir}/recommonmark-33b5c2a4ec50d18d3f659aa119d3bd11452327da
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1541278032
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583218475
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/recommonmark
-cp license.md %{buildroot}/usr/share/package-licenses/recommonmark/license.md
+cp %{_builddir}/recommonmark-33b5c2a4ec50d18d3f659aa119d3bd11452327da/license.md %{buildroot}/usr/share/package-licenses/recommonmark/227326135d61f3b0a7771d7eccc738e48ca056d4
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -100,7 +109,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/recommonmark/license.md
+/usr/share/package-licenses/recommonmark/227326135d61f3b0a7771d7eccc738e48ca056d4
 
 %files python
 %defattr(-,root,root,-)
