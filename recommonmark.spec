@@ -4,7 +4,7 @@
 #
 Name     : recommonmark
 Version  : 33b5c2a4ec50d18d3f659aa119d3bd11452327da
-Release  : 22
+Release  : 23
 URL      : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Source0  : https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
 Summary  : No detailed summary available
