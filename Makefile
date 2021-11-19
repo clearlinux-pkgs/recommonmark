@@ -1,5 +1,5 @@
 PKG_NAME := recommonmark
-URL = https://github.com/rtfd/recommonmark/archive/33b5c2a4ec50d18d3f659aa119d3bd11452327da.tar.gz
+URL = https://files.pythonhosted.org/packages/1c/00/3dd2bdc4184b0ce754b5b446325abf45c2e0a347e022292ddc44670f628c/recommonmark-0.7.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
